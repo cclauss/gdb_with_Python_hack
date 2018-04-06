@@ -17,7 +17,7 @@ install:
   - which python
   - GDB_VERSION="gdb-7.11"
   - time wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.tar.xz"
-  - time tar -xJzf ${GDB_VERSION}.tar.xz
+  - time tar -xJf ${GDB_VERSION}.tar.xz
   - cd ${GDB_VERSION}
   - time ./configure --with-python=$(which python)
   - time make
