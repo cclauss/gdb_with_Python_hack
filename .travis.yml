@@ -7,7 +7,7 @@ python:
 addons:
   apt:
     packages:
-      - gdb
+      #- gdb
       - python2.7-dbg
       - python3-all-dbg
 
@@ -16,8 +16,8 @@ install:
   #- pip install --upgrade pip setuptools
   - which python
   - GDB_VERSION="gdb-7.11"
-  - time wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.tar.gz"
-  - time tar -xvzf ${GDB_VERSION}.tar.gz
+  - time wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.tar.xz"
+  - time tar -xJzf ${GDB_VERSION}.tar.xz
   - cd ${GDB_VERSION}
   - time ./configure --with-python=$(which python)
   - time make
