@@ -8,6 +8,12 @@ python:
 addons:
   apt:
     packages:
+      - cmake
+      - g++
+      - gcc
+      - git
+      - libglib2.0-dev
+      - pkg-config
       #- gdb
       - python2.7-dbg
       - python3-all-dbg
@@ -23,8 +29,10 @@ install:
   - cd ${GDB_VERSION}
   - ./configure --with-python=$(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
   - sudo make
-  - sudo make install
+  - sudo make install  # <-- fails missing: makeinfo: not found
   - gdb --version
+  - gdb -ex "py import sys ; print(sys.version)" -ex quit
+  - gdb -ex "py import requests ; print(requests.version)" -ex quit
 
 script:
   - gdb -ex r -ex quit --args python  -c "import sys ; print(sys.version)"
