@@ -28,7 +28,7 @@ install:
   - wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.tar.xz"
   - tar -xJf ${GDB_VERSION}.tar.xz
   - cd ${GDB_VERSION}
-  - ./configure --with-python=python2.7  # $(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
+  - ./configure --with-python=python2.7.14  # $(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
   - sudo make
   - sudo make install
   - gdb --version  # <-- fails ImportError: cannot import name _remove_dead_weakref
