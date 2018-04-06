@@ -17,6 +17,7 @@ addons:
       #- gdb
       - python2.7-dbg
       - python3-all-dbg
+      - texinfo
 
 install:
   #- true
