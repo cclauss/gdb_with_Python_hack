@@ -2,7 +2,7 @@ language: python
 
 python:
     - "2.7"
-    - "3.6"
+    #- "3.6"
 
 addons:
   apt:
@@ -12,17 +12,22 @@ addons:
       - python3-all-dbg
 
 install:
-  - true
+  #- true
   #- pip install --upgrade pip setuptools
+  - which python
+  - GDB_VERSION="gdb-7.11"
+  - time wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.gz"
+  - time tar -xvzf ${GDB_VERSION}.tar.gz
+  - cd ${GDB_VERSION}
+  - time ./configure --with-python=$(which python)
+  - time make
+  - time make install
+  - gdb --version
 
 script:
   - gdb -ex r -ex quit --args python  -c "import sys ; print(sys.version)"
   - gdb -ex r -ex quit --args python2 -c "import sys ; print(sys.version)"
   - gdb -ex r -ex quit --args python3 -c "import sys ; print(sys.version)"
-
-  #- gdb -ex quit --args python -c "import gdb sys ; gdb.write(sys.version)"
-  #- gdb -ex quit --args python -c "import gdb sys ; gdb.write(sys.version)"
-  #- gdb -ex quit --args python -c "import gdb sys ; gdb.write(sys.version)"
 
   - gdb -ex r -ex quit --args python platform_info.py
 
