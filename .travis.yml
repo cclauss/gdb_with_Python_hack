@@ -1,0 +1,19 @@
+language: python
+
+python:
+    - "2.7"
+    - "3.6"
+
+addons:
+  apt:
+    packages:
+      - gdb
+      - python2.7-dbg
+      - python3-all-dbg
+
+install:
+  - pip install --upgrade pip setuptools
+
+script:
+  - gdb --args python -c "import sys ; print(sys.version)"
+  - gdb --args python -m ensurepip --upgrade
