@@ -15,5 +15,5 @@ install:
   - pip install --upgrade pip setuptools
 
 script:
-  #- gdb --args python platform_info.py
-  - gdb --args python -m ensurepip --upgrade
+  # - gdb --args python platform_info.py
+  - gdb -ex quit --args python -m ensurepip --upgrade
