@@ -12,15 +12,13 @@ addons:
       - python3-all-dbg
 
 install:
-  - pip install --upgrade pip setuptools
+  - true
+  #- pip install --upgrade pip setuptools
 
 script:
-  - gdb -ex quit --args "python -c 'import sys ; print(sys.version)' > out.txt"
-  - cat out.txt
-  - gdb -ex quit --args "python2 -c 'import sys ; print(sys.version)' > out.txt"
-  - cat out.txt
-  - gdb -ex quit --args "python3 -c 'import sys ; print(sys.version)' > out.txt"
-  - cat out.txt
+  - gdb -ex quit --args python -c "import gdb sys ; gdb.write(sys.version)"
+  - gdb -ex quit --args python -c "import gdb sys ; gdb.write(sys.version)"
+  - gdb -ex quit --args python -c "import gdb sys ; gdb.write(sys.version)"
   - gdb -ex quit --args "python platform_info.py > out.txt"
   - cat out.txt
   - gdb -ex quit --args "python -m ensurepip --upgrade > out.txt"
@@ -29,5 +27,5 @@ script:
   - cat out.txt
   - gdb -ex quit --args "pip install requests > out.txt"
   - cat out.txt
-  - gdb -ex quit --args "python -c "import requests ; print(requests.__version__)" > out.txt"
+  - gdb -ex quit --args python -c "import gdb requests ; gdb.write(requests.__version__)"
   - cat out.txt
