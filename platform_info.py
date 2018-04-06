@@ -1,3 +1,4 @@
+import gdb
 import inspect
 import platform
 
@@ -8,10 +9,10 @@ for name, value in inspect.getmembers(platform):
         except (IndexError, TypeError):
             continue
         if str(value).strip("(),' "):
-            print('{:>21}() = {}'.format(name, value))
+            gdb.write('{:>21}() = {}'.format(name, value))
 
  import sys
- print(sys.platform, sys.version)
+ gdb.write(sys.platform, sys.version)
 
 """
          architecture() = ('64bit', '')
