@@ -14,14 +14,15 @@ addons:
 
 install:
   #- true
-  #- pip install --upgrade pip setuptools
+  - pip install --upgrade pip setuptools
+  - pip install requests  # later try '(gdb) py import requests ; print(requests.version)'
   - which python
   - GDB_VERSION="gdb-7.11"
   - wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.tar.xz"
   - tar -xJf ${GDB_VERSION}.tar.xz
   - cd ${GDB_VERSION}
-  - ./configure --with-python=$(which python)
-  - time make
+  - ./configure --with-python=$(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
+  - sudo make
   - sudo make install
   - gdb --version
 
