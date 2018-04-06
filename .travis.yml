@@ -15,9 +15,19 @@ install:
   - pip install --upgrade pip setuptools
 
 script:
-  - gdb -ex quit --args python -c "import sys ; print(sys.version)"
-  - gdb -ex quit --args python platform_info.py
-  - gdb -ex quit --args python -m ensurepip --upgrade
-  - gdb -ex quit --args pip --version
-  - gdb -ex quit --args pip install requests
-  - gdb -ex quit --args python -c "import requests ; print(requests.__version__)"
+  - gdb -ex quit --args python -c "import sys ; print(sys.version)" > out.txt
+  - cat out.txt
+  - gdb -ex quit --args python2 -c "import sys ; print(sys.version)" > out.txt
+  - cat out.txt
+  - gdb -ex quit --args python3 -c "import sys ; print(sys.version)" > out.txt
+  - cat out.txt
+  - gdb -ex quit --args python platform_info.py > out.txt
+  - cat out.txt
+  - gdb -ex quit --args python -m ensurepip --upgrade > out.txt
+  - cat out.txt
+  - gdb -ex quit --args pip --version > out.txt
+  - cat out.txt
+  - gdb -ex quit --args pip install requests > out.txt
+  - cat out.txt
+  - gdb -ex quit --args python -c "import requests ; print(requests.__version__)" > out.txt
+  - cat out.txt
