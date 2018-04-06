@@ -16,7 +16,7 @@ install:
   #- pip install --upgrade pip setuptools
   - which python
   - GDB_VERSION="gdb-7.11"
-  - time wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.gz"
+  - time wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.tar.gz"
   - time tar -xvzf ${GDB_VERSION}.tar.gz
   - cd ${GDB_VERSION}
   - time ./configure --with-python=$(which python)
