@@ -29,7 +29,7 @@ install:
   - tar -xJf ${GDB_VERSION}.tar.xz
   - cd ${GDB_VERSION}
   - ./configure --with-python=python${TRAVIS_PYTHON_VERSION}  # $(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
-  - make
+  - sudo make
   - sudo make install
   - gdb --version
   - gdb -ex "py import sys ; print(sys.version)" -ex quit
