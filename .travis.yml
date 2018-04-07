@@ -35,7 +35,8 @@ install:
   - sudo make
   - sudo make install
   - gdb --version
-  - gdb -ex "py import sys ; print(sys.version)" -ex quit
+  - gdb -ex "show configuration" -ex quit | grep python
+  - gdb -ex "py import sys ; print(sys.executable, sys.version)" -ex quit
   - gdb -ex "py import requests ; print(requests.__version__)" -ex quit
   - /usr/bin/python2.7 -m pip --version
   - sudo /usr/bin/python2.7 -m pip install --upgrade pip
