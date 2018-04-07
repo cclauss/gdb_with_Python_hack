@@ -38,7 +38,7 @@ install:
   - gdb -ex "py import sys ; print(sys.version)" -ex quit
   - gdb -ex "py import requests ; print(requests.__version__)" -ex quit
   - /usr/bin/python2.7 -m pip --version
-  - /usr/bin/python2.7 -m pip install --upgrade pip
+  - sudo /usr/bin/python2.7 -m pip install --upgrade pip
   - /usr/bin/python2.7 -m pip install --upgrade requests
   - gdb -ex "py import requests ; print(requests.__version__)" -ex quit
 
