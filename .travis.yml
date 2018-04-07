@@ -17,6 +17,8 @@ addons:
       #- gdb
       - python2.7-dbg
       - python3-all-dbg
+      - python-pip
+      - python3-pip
       - texinfo
 
 install:
@@ -34,6 +36,7 @@ install:
   - gdb --version
   - gdb -ex "py import sys ; print(sys.version)" -ex quit
   - gdb -ex "py import requests ; print(requests.__version__)" -ex quit
+  - /usr/bin/python2.7 -m pip --version
   - /usr/bin/python2.7 -m ensurepip --upgrade
   - /usr/bin/python2.7 -m pip --version
   - /usr/bin/python2.7 -m pip install --upgrade requests
