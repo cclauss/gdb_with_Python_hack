@@ -30,6 +30,7 @@ install:
   #- pip install --upgrade pip setuptools
   #- pip install requests  # later try '(gdb) py import requests ; print(requests.version)'
   - which python  # /home/travis/virtualenv/python2.7.14/bin/python
+  - echo ${PYTHONHOME} ${PYTHONPATH}
   - which python2  # /home/travis/virtualenv/python2.7.14/bin/python
   - which python3  # /home/travis/virtualenv/python2.7.14/bin/python
   #- which python  # /home/travis/virtualenv/python2.7.14/bin/python
@@ -38,6 +39,8 @@ install:
   - tar -xJf ${GDB_VERSION}.tar.xz
   - cd ${GDB_VERSION}
   - export LDFLAGS=-L$(python -c "print(sys.path[0])")
+  - echo ${LDFLAGS}
+  - export LDFLAGS=-L${PYTHONPATH}
   - echo ${LDFLAGS}
   - ./configure --with-python=$(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
   - sudo make
