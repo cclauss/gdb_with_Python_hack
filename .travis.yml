@@ -1,3 +1,5 @@
+# https://stackoverflow.com/questions/26910649/unable-to-install-gdb-with-python-support
+
 sudo: required
 group: travis_latest
 language: python
@@ -35,14 +37,14 @@ install:
   - wget "http://ftp.gnu.org/gnu/gdb/${GDB_VERSION}.tar.xz"
   - tar -xJf ${GDB_VERSION}.tar.xz
   - cd ${GDB_VERSION}
-  - ./configure --with-python=python${TRAVIS_PYTHON_VERSION}  # $(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
+  - ./configure --with-python=$(which python)  # /home/travis/virtualenv/python2.7.14/bin/python
   - sudo make
   - sudo make install
   - gdb --version
   - gdb -ex "show configuration" -ex quit | grep python
   - gdb -ex "py import sys ; print(sys.executable, sys.version)" -ex quit
   #- gdb -ex "py import requests ; print(requests.__version__)" -ex quit
-  - gdb-python2 -ex "show configuration" -ex quit | grep python
+  #- gdb-python2 -ex "show configuration" -ex quit | grep python
   - /usr/bin/python2.7 -m pip --version
   - sudo /usr/bin/python2.7 -m pip install --upgrade pip
   - /usr/bin/python2.7 -m pip install --upgrade requests
